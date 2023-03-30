@@ -5,7 +5,15 @@
     "apps/*"
   ],
   "devDependencies": {
-    "rimraf": "^4.4.1",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
+    "@semantic-release/gitlab": "^7.0.3",
+    "@semantic-release/npm": "^8.0.0",
+    "conventional-changelog-conventionalcommits": "^4.6.1",
+    "husky": "^8.0.3",
+    "semantic-release": "^18.0.0",
     "turbo": "^1.8.8"
   }
 }
