@@ -1,5 +1,5 @@
 import { Rule } from "eslint";
-import path, { relative } from "path";
+import path from "path";
 
 /**
  * Parses a filename to extract the extension.
@@ -17,27 +17,15 @@ const isLocalFile = (importPath: string) => {
   return importPath.startsWith(".") || importPath.startsWith("/");
 };
 
-const extractName = (from: string, to: string) => {
-  const matchFileExtension = new RegExp(getExtension(to) + "$");
+const stripExtension = (filepath: string) => {
+  const matchFileExtension = new RegExp(getExtension(filepath) + "$");
 
-  return (
-    relative(from, to)
-      /**
-       * @note for some reason I need to replace "../"
-       * because the file matching resolution never seems to quite match up
-       * this may be a bug in my tests and not the code so this code may need
-       * adjusting.
-       * The original implementation only did this: `.replace(/\.\w+$/, '')`
-       */
-      .replace(/\.{1,2}\//, "")
-      // this strips off the file extension
-      .replace(matchFileExtension, "")
-  );
+  return filepath.replace(matchFileExtension, "");
 };
 
 interface CheckImportParams {
   matchingFileExtensions: string[];
-  currentFile: string;
+  currentFilePath: string;
   context: Rule.RuleContext;
 }
 
@@ -46,7 +34,8 @@ type CreateCheckImport = (
 ) => Rule.NodeListener["ImportDeclaration"];
 
 const createCheckImport: CreateCheckImport = (config) => (node) => {
-  const { matchingFileExtensions, currentFile, context } = config;
+  const { matchingFileExtensions, currentFilePath, context } = config;
+
   const importPath = node.source.value;
 
   if (typeof importPath !== "string") {
@@ -57,15 +46,21 @@ const createCheckImport: CreateCheckImport = (config) => (node) => {
     return;
   }
 
+  const currentFileFolderPath = path.parse(currentFilePath).dir;
+
   const importPathFileExtension = getExtension(importPath);
-  const currentFileFileExtension = getExtension(currentFile);
+  const currentFileFileExtension = getExtension(currentFilePath);
 
   if (matchingFileExtensions.includes(importPathFileExtension)) {
-    const importFile = path.resolve(importPath);
-    const importName = extractName(currentFile, importFile);
-    const currentName = extractName(process.cwd(), currentFile);
+    const fullImportPath = path.join(currentFileFolderPath, importPath);
 
-    if (importName !== currentName) {
+    if (stripExtension(fullImportPath) !== stripExtension(currentFilePath)) {
+      const parsedCurrentFile = path.parse(currentFilePath);
+
+      const currentName = stripExtension(
+        `${parsedCurrentFile.name}${parsedCurrentFile.ext}`
+      );
+
       context.report({
         node,
         message: `Import path "${importPath}" should match current file ${currentName}${currentFileFileExtension} as "./${currentName}${importPathFileExtension}"`,
@@ -103,15 +98,20 @@ export const rule: Rule.RuleModule = {
   },
   create(context): Rule.RuleListener {
     const options: Options | undefined = context.options[0];
-    const currentFile = context.getFilename();
-    const fileExtOption = options?.cssExtensions ?? ".css";
+    const currentFilePath = context.getFilename();
+    const fileExtOption = options?.cssExtensions ?? [
+      ".css",
+      ".module.css",
+      ".scss",
+      ".module.scss",
+    ];
     const matchingFileExtensions =
       typeof fileExtOption === "string" ? [fileExtOption] : fileExtOption;
 
     return {
       ImportDeclaration: createCheckImport({
         matchingFileExtensions,
-        currentFile,
+        currentFilePath,
         context,
       }),
     };

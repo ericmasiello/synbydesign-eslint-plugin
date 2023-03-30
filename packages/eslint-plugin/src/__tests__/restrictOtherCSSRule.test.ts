@@ -49,6 +49,34 @@ it("should pass default configuration", () => {
   });
 });
 
+it("should ignore file path", () => {
+  const tester = new RuleTester({
+    parser: require.resolve("@typescript-eslint/parser"),
+  });
+
+  tester.run("restrict-css-imports", rule, {
+    valid: [
+      {
+        code: `import './Foo.css';`,
+        filename: path.resolve("./src/someFolder/Foo.tsx"),
+      },
+    ],
+    invalid: [
+      {
+        code: `import './styles/Other.css';`,
+        filename: path.resolve("./src/someFolder/Foo.tsx"),
+        errors: [
+          {
+            message:
+              'Import path "./styles/Other.css" should match current file Foo.tsx as "./Foo.css"',
+            type: "ImportDeclaration",
+          },
+        ],
+      },
+    ],
+  });
+});
+
 it("should match a custom file extension (e.g. `.module.scss`", () => {
   const tester = new RuleTester({
     parser: require.resolve("@typescript-eslint/parser"),

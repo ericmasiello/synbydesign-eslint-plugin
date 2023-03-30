@@ -3,6 +3,6 @@
   "plugins": ["@typescript-eslint", "@synbydesign-eslint"],
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "rules": {
-    "@synbydesign-eslint/restrict-asset-import": "error"
+    "@synbydesign-eslint/restrict-asset-import": ["error"]
   }
 }
