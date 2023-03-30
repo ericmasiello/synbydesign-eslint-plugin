@@ -1,0 +1,14 @@
+# Mac
+.DS_Store
+
+# dependencies
+node_modules
+
+# library build artifacts
+dist
+
+# app build artifacts
+build
+
+# turbo
+.turbo

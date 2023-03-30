@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "clean": {},
+    "build": {
+      "dependsOn": ["clean", "^build"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts"]
+    },
+    "test": {
+      "inputs": ["src/**/*.tsx", "src/**/*.ts"]
+    },
+    "lint": {
+      // Lint for apps/demo depends on the build of packages/eslint-plugin
+      "dependsOn": ["^build"]
+    }
+  }
+}

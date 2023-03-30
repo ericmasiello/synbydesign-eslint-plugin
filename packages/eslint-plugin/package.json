@@ -1,0 +1,31 @@
+{
+  "name": "@synbydesign-eslint/eslint-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "lint": "eslint src/ --max-warnings 0 --ext .js,.ts,.jsx,.tsx"
+  },
+  "keywords": [],
+  "author": "Eric Masiello <eric.j.masiello@gmail.com> (http://synbydesign.com/)",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": ">= 8"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.37.0",
+    "@types/estree": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
+    "typescript": "^5.0.2",
+    "vitest": "^0.29.8"
+  }
+}
