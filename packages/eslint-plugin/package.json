@@ -11,7 +11,9 @@
     "test:watch": "vitest",
     "clean": "rimraf dist",
     "build": "tsc",
-    "lint": "eslint src/ --max-warnings 0 --ext .js,.ts,.jsx,.tsx"
+    "lint": "eslint src/ --max-warnings 0 --ext .js,.ts,.jsx,.tsx",
+    "publish:dry": "semantic-release -d",
+    "publish": "semantic-release"
   },
   "keywords": [],
   "author": "Eric Masiello <eric.j.masiello@gmail.com> (http://synbydesign.com/)",
