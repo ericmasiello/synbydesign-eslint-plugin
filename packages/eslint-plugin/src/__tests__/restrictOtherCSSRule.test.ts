@@ -1,7 +1,7 @@
 import { RuleTester } from "eslint";
 import path from "path";
 import { it } from "vitest";
-import { rule } from "../restrictOtherCSSRule";
+import { rule } from "../restrictAssetImport";
 
 it("should pass default configuration", () => {
   const tester = new RuleTester({

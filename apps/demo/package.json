@@ -1,32 +1,28 @@
 {
-  "name": "@synbydesign/eslint-restrict-asset-import-path-plugin",
+  "name": "demo",
+  "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
+  "main": "index.js",
   "scripts": {
-    "test": "vitest --run",
-    "test:watch": "vitest",
-    "clean": "rimraf dist",
     "build": "tsc",
     "lint": "eslint src/ --max-warnings 0 --ext .js,.ts,.jsx,.tsx"
   },
   "keywords": [],
   "author": "Eric Masiello <eric.j.masiello@gmail.com> (http://synbydesign.com/)",
   "license": "MIT",
-  "peerDependencies": {
-    "eslint": ">= 8"
+  "dependencies": {
+    "@synbydesign-eslint/eslint-plugin": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/eslint": "^8.37.0",
-    "@types/estree": "^1.0.0",
+    "@types/react": "^18.0.31",
+    "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
     "eslint": "^8.37.0",
-    "typescript": "^5.0.2",
-    "vitest": "^0.29.8"
+    "typescript": "^5.0.2"
   }
 }
