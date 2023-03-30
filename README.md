@@ -1,4 +1,4 @@
-# `@synbydesign/eslint-restrict-asset-import-path-plugin`
+# `@synbydesign-eslint/eslint-plugin`
 
 This eslint plugin is designed restrict how CSS-like assets are imported.
 
