@@ -12,12 +12,6 @@
     "lint": {
       // Lint for apps/demo depends on the build of packages/eslint-plugin
       "dependsOn": ["^build"]
-    },
-    "publish:dry": {
-      "dependsOn": ["build"]
-    },
-    "publish": {
-      "dependsOn": ["build"]
     }
   }
 }

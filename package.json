@@ -7,9 +7,7 @@
   "scripts": {
     "test": "npx turbo run test",
     "lint": "npx turbo run lint",
-    "build": "npx turbo run build",
-    "publish:dry": "CI=true npx turbo run publish:dry",
-    "publish": "CI=true npx turbo run publish"
+    "build": "npx turbo run build"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",

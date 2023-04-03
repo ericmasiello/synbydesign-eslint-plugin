@@ -32,11 +32,8 @@ npm run
 Make sure the `.envrc` values are correctly set and sourced. Then run:
 
 ```bash
-# Dry run
-npm run publish:dry
-
-# Publishes to npm
-npm run publish
+cd packages/eslint-config
+npm publish
 ```
 
-Note that `.releaserc.js` specifies which git branches result in the type of release. For example, publishing from a branch named `alpha` will publish a prerelease. Whereas, publishing from `main` will publish a latest release.
+At the moment, `semantic-release` does not work correctly. This requires further investigation.
