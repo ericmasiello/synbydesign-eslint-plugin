@@ -32,8 +32,24 @@ npm run
 Make sure the `.envrc` values are correctly set and sourced. Then run:
 
 ```bash
+# run this from the packaages/esling-config directory
 cd packages/eslint-config
+
+# update the version
+npm version [major|minor|patch]
+
+# update the commit with the updated version in package.json
+git add .
+git commit --amend
+git push
+
+# publish the new version to npm
 npm publish
+
+# create a tag with the latest version
+# e.g., `git tag v1.0.1`
+git tag v[version-number]
+git push --tags
 ```
 
 At the moment, `semantic-release` does not work correctly. This requires further investigation.
