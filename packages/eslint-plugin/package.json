@@ -1,6 +1,6 @@
 {
   "name": "@synbydesign-eslint/eslint-plugin",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "description": "",
   "main": "dist/index.js",
   "files": [
@@ -11,7 +11,9 @@
     "test:watch": "vitest",
     "clean": "rimraf dist",
     "build": "tsc",
-    "lint": "eslint src/ --max-warnings 0 --ext .js,.ts,.jsx,.tsx"
+    "lint": "eslint src/ --max-warnings 0 --ext .js,.ts,.jsx,.tsx",
+    "publish:dry": "semantic-release -d",
+    "publish": "semantic-release"
   },
   "keywords": [],
   "author": "Eric Masiello <eric.j.masiello@gmail.com> (http://synbydesign.com/)",
@@ -25,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
     "eslint": "^8.37.0",
+    "rimraf": "^4.4.1",
     "typescript": "^5.0.2",
     "vitest": "^0.29.8"
   }

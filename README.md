@@ -1,14 +1,8 @@
-# `@synbydesign-eslint/eslint-plugin`
+# `@synbydesign-eslint`
 
 This eslint plugin is designed restrict how CSS-like assets are imported.
 
-## How to install
-
-TODO
-
-## How to configure
-
-TODO
+See [README](https://github.com/ericmasiello/synbydesign-eslint-plugin/blob/main/packages/eslint-plugin/README.md) for installation and configuration details.
 
 ## How to work with this repository
 
@@ -16,11 +10,11 @@ This repository is a monorepo managed by Turborepo. Below are common commands yo
 
 ```bash
 # test
-npx turbo run test
+npm run test
 
-# lint
-npx turbo run lint
+# lint - @note this intentionally fails inside the App demo component
+npm run lint
 
 # build
-npx turbo run build
+npm run
 ```
