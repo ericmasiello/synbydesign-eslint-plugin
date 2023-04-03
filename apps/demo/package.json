@@ -12,7 +12,7 @@
   "author": "Eric Masiello <eric.j.masiello@gmail.com> (http://synbydesign.com/)",
   "license": "MIT",
   "dependencies": {
-    "@synbydesign-eslint/eslint-plugin": "^1.0.0",
+    "@synbydesign-eslint/eslint-plugin": "file:packages/eslint-plugin",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

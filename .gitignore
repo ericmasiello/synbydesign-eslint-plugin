@@ -12,3 +12,8 @@ build
 
 # turbo
 .turbo
+
+# env
+
+.env
+.envrc
