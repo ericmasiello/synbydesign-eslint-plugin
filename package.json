@@ -8,8 +8,8 @@
     "test": "npx turbo run test",
     "lint": "npx turbo run lint",
     "build": "npx turbo run build",
-    "publish:dry": "npx turbo run publish:dry",
-    "publish": "npx turbo run publish"
+    "publish:dry": "CI=true npx turbo run publish:dry",
+    "publish": "CI=true npx turbo run publish"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
