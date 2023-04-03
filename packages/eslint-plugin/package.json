@@ -1,6 +1,6 @@
 {
   "name": "@synbydesign-eslint/eslint-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "files": [
@@ -13,7 +13,19 @@
     "build": "tsc",
     "lint": "eslint src/ --max-warnings 0 --ext .js,.ts,.jsx,.tsx"
   },
-  "keywords": [],
+  "keywords": [
+    "eslint",
+    "css",
+    "asset",
+    "import",
+    "scss",
+    "sass",
+    "css module"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ericmasiello/synbydesign-eslint-plugin.git"
+  },
   "author": "Eric Masiello <eric.j.masiello@gmail.com> (http://synbydesign.com/)",
   "license": "MIT",
   "peerDependencies": {
